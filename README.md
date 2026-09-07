@@ -1,6 +1,15 @@
 # 🌦️ Australia Weather Analytics & EDA
 
-A comprehensive **Exploratory Data Analysis (EDA)** study investigating continental weather dynamics and precipitation trigger mechanisms across Australia using historical records from the **Australian Bureau of Meteorology (BoM)**.
+An end-to-end weather analytics project that explores rainfall behavior across Australia using historical data from the **Australian Bureau of Meteorology (BoM)**, then packages insights into an interactive **Dash** application.
+
+---
+
+## 💼 Why this project is portfolio-ready
+- Works on a **real, large-scale dataset** (145k+ weather observations).
+- Covers complete analytics flow: **data preparation → EDA → feature engineering → insight delivery**.
+- Produces both:
+  - technical analysis (`rain_analysis_copy.ipynb`)
+  - stakeholder-facing product (`app.py` dashboard + PDF presentation)
 
 ---
 
@@ -17,39 +26,41 @@ A comprehensive **Exploratory Data Analysis (EDA)** study investigating continen
 ---
 
 ## 🔍 Key Findings & Analytical Highlights
-
-1. **Continental Precipitation Imbalance:**
-   - 75.8% Dry days vs. 21.9% Rain days (Rainfall ≥ 1.0 mm) across 145,460 observations.
-2. **Location-Specific Median Imputation:**
-   - Addressed systemic missing data by calculating group-level medians per weather station (`df.groupby('Location')`), preserving local microclimates (from tropical Cairns to arid Alice Springs) without distorting physical baselines.
-3. **Intra-Day Diurnal Delta Engineering:**
-   - Engineered rate-of-change metrics between 9 AM and 3 PM (`PressureChange`, `HumidityChange`, `TempChange`) to capture approaching cyclonic fronts.
-4. **The July 2017 Missing-Data Deduction:**
-   - Dataset records terminate abruptly on June 25, 2017. Tracking the micro-trends of late June revealed a precipitous pressure drop (from 1021 to 1005 hPa) accompanied by overcast cloud cover (8.0 oktas), empirically demonstrating an inbound winter storm front entering July 2017.
-5. **Atmospheric Rain Triggers:**
-   - Strongest physical indicators preceding precipitation: 3 PM Barometric Pressure drop below 1012 hPa and a 3 PM Relative Humidity surge peaking near 72%.
-   - Maritime wind corridors from the South-East and South delivering >32–35% rainfall incidence.
+1. **Continental precipitation imbalance**
+   - 75.8% dry days vs. 21.9% rain days (Rainfall ≥ 1.0 mm).
+2. **Location-specific median imputation**
+   - Missing values treated per station (`groupby('Location')`) to preserve microclimate behavior.
+3. **Intra-day feature engineering**
+   - Delta features between 9 AM and 3 PM helped expose approaching weather shifts.
+4. **Pressure + humidity as rain triggers**
+   - Rain likelihood rises with low pressure at 3 PM and high humidity.
+5. **Wind corridor signal**
+   - South-East and South wind directions show stronger rain incidence.
 
 ---
 
 ## 📊 Repository Contents
-- `rain_analysis_copy.ipynb`: Complete exploratory data analysis, geospatial imputation logic, and statistical visualizations.
-- `app.py`: Interactive production dashboard developed using Plotly and Dash (featuring 5 analytical workspaces and multi-level dynamic filtering).
-- `report_eda_AUSWeather.pdf`: Publication-grade 16:9 widescreen executive presentation deck detailing the complete methodology and visual findings.
+- `rain_analysis_copy.ipynb` — Complete EDA workflow and visual analysis.
+- `app.py` — Interactive dashboard with filtering by location, year, and month.
+- `report_eda_AUSWeather.pdf` — Presentation-ready summary of methods and findings.
 
 ---
 
-## 🚀 Running the Interactive Dashboard Locally
+## 🧩 My Contributions (Portfolio Section)
+Use this section in your portfolio/resume to highlight your impact:
+- Built and validated data-cleaning workflow for weather observations.
+- Engineered weather delta features for stronger rainfall interpretation.
+- Developed interactive Dash dashboard for exploratory decision support.
+- Translated technical findings into executive-ready visuals and report artifacts.
 
+---
+
+## 🚀 Run Locally
 ```bash
-# Clone the repository
 git clone https://github.com/AhmedYoussefJo/Australia-Weather-Analytics-EDA.git
 cd Australia-Weather-Analytics-EDA
-
-# Install dependencies
-pip install dash dash-bootstrap-components pandas plotly numpy
-
-# Launch dashboard
+pip install -r requirements.txt
 python app.py
 ```
+
 Open `http://127.0.0.1:8050/` in your browser.
